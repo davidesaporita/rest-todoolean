@@ -18,45 +18,22 @@
                 <input class="input-text" type="text" placeholder="Inserisci il tuo nuovo todo">
             </div>
             <div class="list-container">
-                <ul class="list-items">
-                    <li class="item" data-id="">
-                        <span class="text">Cosa da fare</span>
-                        <div class="actions">
-                            <span class="completed"><i class="fas fa-check"></i></span>
-                            <span class="edit"><i class="fas fa-pen"></i></span>
-                            <span class="remove"><i class="fas fa-times"></i></span>
-                        </div>
-                    </li>
-                    <li class="item" data-id="">
-                        <span class="text">Cosa da fare</span>
-                        <div class="actions">
-                            <span class="completed"><i class="fas fa-check"></i></span>
-                            <span class="edit"><i class="fas fa-pen"></i></span>
-                            <span class="remove"><i class="fas fa-times"></i></span>
-                        </div>
-                    </li>
-                    <li class="item" data-id="">
-                        <span class="text">Cosa da non fare</span>
-                        <div class="actions">
-                            <span class="completed"><i class="fas fa-check"></i></span>
-                            <span class="edit"><i class="fas fa-pen"></i></span>
-                            <span class="remove"><i class="fas fa-times"></i></span>
-                        </div>
-                    </li>
-                    <li class="item" data-id="">
-                        <span class="text">Cosa da fare</span>
-                        <div class="actions">
-                            <span class="completed"><i class="fas fa-check"></i></span>
-                            <span class="edit"><i class="fas fa-pen"></i></span>
-                            <span class="remove"><i class="fas fa-times"></i></span>
-                        </div>
-                    </li>
-                </ul>
+                <ul class="list-items"></ul>
             </div>
         </main>
     </div>
 
-
+    <!-- Handlebars Template -->
+    <script id="item-template" type="text/x-handlebars-template">
+        <li class="item" data-id="{{ id }}">
+            <span class="text">{{ text }}</span>
+            <div class="actions">
+                <span class="completed"><i class="fas fa-check"></i></span>
+                <span class="edit"><i class="fas fa-pen"></i></span>
+                <span class="remove"><i class="fas fa-times"></i></span>
+            </div>
+        </li>
+    </script>
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
