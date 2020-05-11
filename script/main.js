@@ -1,8 +1,9 @@
 // API Vars
 var apiUrl = 'http://157.230.17.132:3019/todos';
-var settingsGET = { url: apiUrl, method: 'GET' }
-var settingsPOST = { url: apiUrl, method: 'POST', data: { text: '' } }
+var settingsGET =    { url: apiUrl, method: 'GET' }
+var settingsPOST =   { url: apiUrl, method: 'POST', data: { text: '' } }
 var settingsDELETE = { url: apiUrl, method: 'DELETE' }
+var settingsPUT =    { url: apiUrl, method: 'PUT' }
 
 $(document).ready(function() {
 
@@ -26,6 +27,10 @@ $(document).ready(function() {
 
     app.on('click','.remove', function() {
         deleteToDo($(this), template, list);    
+    });
+
+    app.on('click','.edit', function() {
+        updateToDo($(this), template, list);    
     });
 
 }); // End of ready function
@@ -60,4 +65,39 @@ function deleteToDo(self, template, list) {
         .done(data  => { populate(template, list); })
         .fail(error => { console.log('fail' + error); })
         .always(()  => { settingsDELETE.url = apiUrl; });
+}
+
+// cruD - Update element
+function updateToDo(self, template, list) {
+    var selfId = self.parents('li.item').data('id');
+
+    // Refs
+    var itemToUpdate = $('.item[data-id=' + selfId + ']');
+    var app = $('#app');
+    var textToUpdate = itemToUpdate.children('.text');
+    var input = itemToUpdate.children('.text-update');
+
+    textToUpdate.toggle();
+    input.toggle();
+
+    // Event on keyup | input
+    app.on('keyup', '.text-update', function(e) {
+        if(e.which === 13 || e.keyCode === 13) {
+            var newValue = input.val().trim();
+
+            settingsPUT.url += ('/' + selfId);
+            settingsPUT.data = { text: newValue };  
+            console.log(settingsPUT);
+
+            $.ajax(settingsPUT)
+                .done(data  => { populate(template, list); })
+                .fail(error => { console.log('fail' + error); })
+                .always(()  => { 
+                    textToUpdate.toggle();
+                    input.toggle();
+                    settingsPUT.url = apiUrl; 
+                });
+        }
+        e.stopPropagation();
+    });
 }
