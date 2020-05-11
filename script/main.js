@@ -67,7 +67,7 @@ function deleteToDo(self, template, list) {
         .always(()  => { settingsDELETE.url = apiUrl; });
 }
 
-// cruD - Update element
+// crUd - Update element
 function updateToDo(self, template, list) {
     var selfId = self.parents('li.item').data('id');
 
