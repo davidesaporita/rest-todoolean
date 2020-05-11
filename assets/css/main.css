@@ -1,11 +1,72 @@
+/* Generals */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    color: #eee;
 }
 
+/* Layout */
+
 #app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
     width: 100%;
+    background-color: #1f1f1f;
+}
+
+/* Typography */ 
+
+ul {
+    list-style: none;
+}
+
+/* Utilities */
+
+.input-text {
+    display: inline-block;
+    width: 500px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, .55);  
+    color: #111;
+}
+
+.input-text::placeholder {
+    margin-left: 10px;
+    color: #aaa;
+}
+
+.input-text:focus {
+    box-shadow: 0 0 0 3px cadetblue;
+}
+
+/* Main */ 
+
+.input {
+    margin-bottom: 20px;
+}
+
+.list-items .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 8px 0 ;
+    border-bottom: 1px solid;
+}
+
+.list-items .item .actions {
+    display: inline-block;
+}
+
+.list-items .item .actions > * {
+    cursor: pointer;
 }
