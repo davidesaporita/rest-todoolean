@@ -13,13 +13,28 @@
 #app {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
+    padding-top: 100px;
     background-color: #1f1f1f;
 }
 
+.main {
+    flex-grow: 1;
+}
+
+footer {
+    padding: 50px;
+    opacity: .5;
+}
+
 /* Typography */ 
+
+h1 {
+    margin-bottom: 50px;
+    font-size: 50px;
+}
 
 ul {
     list-style: none;
@@ -48,6 +63,10 @@ ul {
     box-shadow: 0 0 0 3px cadetblue;
 }
 
+.opacity {
+    opacity: .2;
+}
+
 /* Main */ 
 
 .input {
@@ -58,23 +77,72 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     margin-bottom: 5px;
     padding: 8px 0 ;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid rgba(255, 255, 255, .25);
 }
 
 .list-items .item .actions {
     display: inline-block;
+    display: none;
 }
 
 .list-items .item .actions > * {
+    margin-left: 5px;
     cursor: pointer;
+}
+
+.list-items .item .actions i {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .55);
+    transition: color 0.3s;
+}
+
+.list-items .item .actions > .completed > i:hover {
+    color: seagreen;
+}
+
+.list-items .item .actions > .edit > i:hover {
+    color: tomato;
+}
+
+.list-items .item .actions > .remove > i:hover {
+    color: darkred;
 }
 
 .list-items .item .text-update {
     display: none;
-    background: rgba(0,0,0,.25); 
+    position: relative;
+    width: 390px;
+    background: #1f1f1f; 
     outline: none;
     border: none;
     font-size: 16px;
+}
+
+.list-items .item .hidden-arrow {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 8px;
+    left: -30px;
+    font-size: 18px;
+    color: white;
+    z-index: 2;
+}
+
+.list-items .item .hidden-arrow > i {
+    transform: translateX(0);
+    transition: transform .3s;
+    animation: arrow-movement 1s infinite;
+}
+
+@keyframes arrow-movement {
+    0%,100% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(0);
+    }
 }

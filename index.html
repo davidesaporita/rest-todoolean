@@ -13,6 +13,10 @@
 </head>
 <body>
     <div id="app">
+        <header>
+            <h1>Powerful ToDoList</h1>
+        </header>
+
         <main class="main">
             <div class="input">
                 <input class="input-text" type="text" placeholder="Inserisci il tuo nuovo todo">
@@ -21,15 +25,21 @@
                 <ul class="list-items"></ul>
             </div>
         </main>
+
+        <footer>
+            Made with &hearts; by Davide Saporita for Boolean Careers / Classe #12 &copy; 2020
+        </footer>
     </div>
+
 
     <!-- Handlebars Template -->
     <script id="item-template" type="text/x-handlebars-template">
         <li class="item" data-id="{{ id }}">
+            <div class="hidden-arrow"><i class="far fa-hand-point-right"></i></div>
             <span class="text">{{ text }}</span>
             <input class="text-update" type="text" value="{{ text }}" placeholder="{{ text }}">
             <div class="actions"">
-                <!-- <span class="completed"><i class="fas fa-check"></i></span> -->
+                <span class="completed"><i class="fas fa-check"></i></span>
                 <span class="edit"><i class="fas fa-pen"></i></span>
                 <span class="remove"><i class="fas fa-times"></i></span>
             </div>
